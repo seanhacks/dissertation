@@ -69,6 +69,7 @@ for j in range(len(all_file_names)):
         masks = []
 
         # loop over all of the segmentation shapes of the image
+        # Use the cv2 to generate the segmentation masks of different shapes. 
         for i in range(len(data[all_file_names[j]])):
             mask = np.zeros((img.shape[0],img.shape[1]))
             if (data[all_file_names[j]][i]['name'] == 'polygon'
