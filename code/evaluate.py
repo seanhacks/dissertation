@@ -59,7 +59,7 @@ def evaluate(loader, model):
             fp += np.sum(np.logical_and(y == 0, preds == 1))
             fn += np.sum(np.logical_and(y == 1, preds == 0))
 
-            dice_score += (2 * (preds * y).sum()) / (2 * (preds * y).sum()+ ((preds*y)<1).sum())
+            #dice_score += (2 * (preds * y).sum()) / (2 * (preds * y).sum()+ ((preds*y)<1).sum())
             dice_score += ((2.*(preds*y).sum())+1e-6)/(preds.sum()+y.sum()+1e-6)
 
     end_time = time.time()
