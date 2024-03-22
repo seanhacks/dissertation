@@ -3,6 +3,9 @@ import glob
 import json 
 import matplotlib.pyplot as plt
 
+# Functions used to generate graphs used in the latex report, and to 
+# calculate total training time for the investigations.
+
 def calculate_training_time(directory_path):
     total_training_time = 0
     count = 0
@@ -132,13 +135,3 @@ def seed_graph(directory_path):
     plt.ylabel('Final Validation Dice Score')
     plt.savefig("seeds.png")
 
-
-# Replace 'directory_path' with the path to your directory containing sub-directories
-#directory_path = './hyper_parameter_tuning/'
-#seed_graph(directory_path)
-#boxplot_batch_num(directory_path)
-
-
-directory_path = './combined_aug/'
-total_training_time = calculate_training_time(directory_path)
-print("Total Training Time:", total_training_time)
