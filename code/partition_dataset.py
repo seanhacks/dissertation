@@ -4,6 +4,8 @@ import random
 
 csv = pd.read_csv("./dataset_info/radiology_annotations.csv")
 
+# Removes the unwanted images from the dataset, and then splits the images
+# into a 70-15-15 training, validation, testing split.
 
 # all of the image tags that we will keep in the dataset.
 good = ["suspicious nodules", "malignant", "diffuse macrocalcifications", "malignant mass", "microcalcifications", 
@@ -23,6 +25,7 @@ TEST_MASK_DIR = "./images/test_masks/"
 to_delete = []
 
 
+# delete unwanted images.
 for index, row in csv.iterrows():
     has_tag = False
     if "DM" in row["Image_name"]:
@@ -53,11 +56,12 @@ def count_classes(df):
         else:
             classes[1] += 1
         
-
     return classes 
 
 arr = count_classes(csv)
 print(arr)
+
+
 def within_tolerance(lst, len_norm, len_sus, tol = 8):
     if len(lst[0]) in range(len_norm-tol, len_norm+tol+1) and len(lst[1]) in range(len_sus-tol, len_sus+tol+1):
         return True
